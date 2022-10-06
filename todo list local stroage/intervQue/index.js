@@ -1,0 +1,1 @@
+document.querySelector("#row").addEventListener("click", (event) =>console.log(event));

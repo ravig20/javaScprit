@@ -1,0 +1,44 @@
+/* eslint-disable */
+const arr = [1, 2, 4];
+// map
+Array.prototype.MyMap = function (cb) {
+  let newARR = [];
+  for (let i = 0; i < this.length; i++) {
+    newARR.push(cb(this[i], i, this));
+  }
+  return newARR;
+};
+
+// const newarr = arr.MyMap((arr)=>arr+1);
+
+Array.prototype.Myfilter = function (cb) {
+  let sleArr = [];
+
+  for (let i = 0; i < this.length; i++) {
+    let isPassTest = cb(this[i], i, this);
+    if (isPassTest) {
+      sleArr.push(this[i]);
+    }
+  }
+  return sleArr;
+};
+
+// reducer
+Array.prototype.Myreducer = function (cb, initialValue) {
+  let accu = initialValue ?? this[0];
+  for (let i = 0; i < this.length; i++) {
+    accu = cb(accu, this[i], i, this);
+  }
+  return accu;
+};
+
+// forEach
+Array.prototype.MyforEach = function (cb) {
+  for (let i = 0; i < this.length; i++) {
+    this[i] = cb(this[i], i, this);
+  }
+};
+// arr.MyforEach((arr) => {
+//   return arr + 2;
+// });
+// console.log(arr)
